@@ -3,6 +3,7 @@ package com.chain4travel.cmbplugin.grpc.services;
 import build.buf.gen.cmp.services.accommodation.v1alpha1.AccommodationSearchRequest;
 import build.buf.gen.cmp.services.accommodation.v1alpha1.AccommodationSearchResponse;
 import build.buf.gen.cmp.services.accommodation.v1alpha1.AccommodationSearchServiceGrpc;
+import build.buf.gen.cmp.types.v1alpha1.SearchResponseMetadata;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 
@@ -16,7 +17,7 @@ public class AccommodationSearchImpl extends AccommodationSearchServiceGrpc.Acco
         String recipient = METADATA_CTX_KEY.get();
         //TODO call recipient's legacy system.
 
-        AccommodationSearchResponse response = AccommodationSearchResponse.newBuilder().setContext("Hello from Spring Boot grpc partner plugin!").build();
+        AccommodationSearchResponse response = AccommodationSearchResponse.newBuilder().setMetadata(SearchResponseMetadata.newBuilder().setContext("Hello from Spring Boot grpc partner plugin!")).build();
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
