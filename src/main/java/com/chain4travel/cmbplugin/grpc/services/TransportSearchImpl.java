@@ -1,9 +1,9 @@
 package com.chain4travel.cmbplugin.grpc.services;
 
-import build.buf.gen.cmp.services.transport.v1alpha1.TransportSearchRequest;
-import build.buf.gen.cmp.services.transport.v1alpha1.TransportSearchResponse;
-import build.buf.gen.cmp.services.transport.v1alpha1.TransportSearchServiceGrpc;
-import build.buf.gen.cmp.types.v1alpha1.SearchResponseMetadata;
+import build.buf.gen.cmp.services.transport.v1alpha.TransportSearchRequest;
+import build.buf.gen.cmp.services.transport.v1alpha.TransportSearchResponse;
+import build.buf.gen.cmp.services.transport.v1alpha.TransportSearchServiceGrpc;
+import build.buf.gen.cmp.types.v1alpha.SearchResponseMetadata;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 
