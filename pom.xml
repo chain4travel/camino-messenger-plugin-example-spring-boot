@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.0</version>
+        <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.chain4travel</groupId>
@@ -14,11 +14,13 @@
     <name>cmb-plugin</name>
     <description>cmb-plugin</description>
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <java.version>17</java.version>
-        <protoc.version>3.17.3</protoc.version>
-        <grpc.version>1.41.0</grpc.version>
-        <camino-messenger-protocol.protobuff.version>25.2.0.1.20240415140348.9f62f6fadb08</camino-messenger-protocol.protobuff.version>
-        <camino-messenger-protocol.grpc.version>1.63.0.1.20240415140348.9f62f6fadb08</camino-messenger-protocol.grpc.version>
+        <camino-messenger-protocol.protobuff.version>24.0.0.1.20240415140348.9f62f6fadb08</camino-messenger-protocol.protobuff.version>
+        <camino-messenger-protocol.grpc.version>1.58.0.1.20240415140348.9f62f6fadb08</camino-messenger-protocol.grpc.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <dependencies>
 
@@ -27,29 +29,17 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty</artifactId>
-            <version>1.62.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.devh</groupId>
-            <artifactId>grpc-client-spring-boot-starter</artifactId>
-            <version>3.0.0.RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.grpc</groupId>
-                    <artifactId>grpc-netty-shaded</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>1.58.0</version>
         </dependency>
 
         <!-- For the server (only) -->
         <dependency>
             <groupId>net.devh</groupId>
-            <artifactId>grpc-server-spring-boot-starter</artifactId>
+            <artifactId>grpc-spring-boot-starter</artifactId>
             <version>2.15.0.RELEASE</version>
             <exclusions>
                 <exclusion>
@@ -73,15 +63,50 @@
             <version>${camino-messenger-protocol.grpc.version}</version>
         </dependency>
 
+        <!-- caching framework -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.1.8</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
+    
+    <repositories>
+        <repository>
+            <name>Buf Maven Repository</name>
+            <id>buf</id>
+            <url>https://buf.build/gen/maven</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+          </repository>
+    </repositories>
 
 </project>
