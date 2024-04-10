@@ -19,14 +19,18 @@ An easy way to test a service is to use grpcurl. For installation steps, refer t
 Call the ping service for instance with:
 
 ```sh
-grpcurl -plaintext localhost:9090 cmp.services.ping.v1alpha1.PingService.Ping
+grpcurl -plaintext localhost:50052 cmp.services.ping.v1alpha1.PingService.Ping
 ```
 
 You can list the services and methods with:
 ```sh
-grpcurl -plaintext localhost:9090 list
+grpcurl -plaintext localhost:50052 list
 ```
 or get the proto description with:
 ```sh
- grpcurl -plaintext localhost:9090 describe
+ grpcurl -plaintext localhost:50052 describe
  ```
+
+## Implementing a grpc-client
+An example grpc-client implementation is included in Ping Service client is implemented in the `com.chain4travel.cmbplugin.grpc.client` package.
+It includes a `MetadataInterceptor` that adds the `recipient` as grpc metadata to the request.
