@@ -7,9 +7,10 @@ public class MetadataInterceptor implements io.grpc.ServerInterceptor{
     public static final Context.Key<String> METADATA_CTX_KEY = Context.key("metadata");
     public static final Metadata.Key<String> METADATA_RECIPIENT_KEY =
             Metadata.Key.of("recipient", Metadata.ASCII_STRING_MARSHALLER);
-
+    public static final Metadata.Key<String> METADATA_PROVIDER_OPERATOR_KEY =
+            Metadata.Key.of("provider_operator", Metadata.ASCII_STRING_MARSHALLER);
     @Override
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> call, Metadata metadata, ServerCallHandler<ReqT, RespT> next) {
-        return Contexts.interceptCall(Context.current().withValue(METADATA_CTX_KEY, metadata.get(METADATA_RECIPIENT_KEY)), call, metadata, next);
+        return Contexts.interceptCall(Context.current().withValues(METADATA_CTX_KEY, metadata.get(METADATA_RECIPIENT_KEY), METADATA_CTX_KEY, metadata.get(METADATA_PROVIDER_OPERATOR_KEY) ), call, metadata, next);
     }
 }

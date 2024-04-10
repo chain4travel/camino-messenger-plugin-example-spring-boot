@@ -1,0 +1,7 @@
+grpc:
+  server:
+    port: 50052
+  client:
+    cmb-client:
+      address: localhost:9090
+      negotiation-type: plaintext
