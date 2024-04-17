@@ -17,8 +17,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <java.version>17</java.version>
-        <camino-messenger-protocol.protobuff.version>24.0.0.1.20240415140348.9f62f6fadb08</camino-messenger-protocol.protobuff.version>
-        <camino-messenger-protocol.grpc.version>1.58.0.1.20240415140348.9f62f6fadb08</camino-messenger-protocol.grpc.version>
+        <camino-messenger-protocol.protobuff.version>24.0.0.1.20240416134251.eea07d77749c</camino-messenger-protocol.protobuff.version>
+        <camino-messenger-protocol.grpc.version>1.58.0.1.20240416134251.eea07d77749c</camino-messenger-protocol.grpc.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
