@@ -69,6 +69,14 @@
             <artifactId>caffeine</artifactId>
             <version>3.1.8</version>
         </dependency>
+        
+        <!-- web3 framework -->
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>core</artifactId>
+            <version>4.9.6</version>
+        </dependency>
+        
     </dependencies>
 
     <build>
@@ -106,7 +114,12 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-          </repository>
+        </repository>
+
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
 </project>

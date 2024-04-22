@@ -34,3 +34,14 @@ or get the proto description with:
 ## Implementing a grpc-client
 An example grpc-client implementation is included in Ping Service client is implemented in the `com.chain4travel.cmbplugin.grpc.client` package.
 It includes a `MetadataInterceptor` that adds the `recipient` as grpc metadata to the request.
+
+
+## Starting the sample Spring boot application
+
+In order to start the sample Spring boot application you need to pass the private key used for the smart contract via a environment variable, like this:
+
+`-Dcmbplugin.web3.smartContract.walletPrivateKey=0x...`
+
+The implementation uses the Spring configuration feature:
+
+`@Value("${cmbplugin.web3.smartContract.walletPrivateKey}")`
