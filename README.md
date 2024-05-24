@@ -34,3 +34,8 @@ or get the proto description with:
 ## Implementing a grpc-client
 An example grpc-client implementation is included in Ping Service client is implemented in the `com.chain4travel.cmbplugin.grpc.client` package.
 It includes a `MetadataInterceptor` that adds the `recipient` as grpc metadata to the request.
+
+
+## Versioning
+This project uses semantic versioning and releases a new version regularly upon adding support of a newer release of the camino messenger protocol.
+Version names do not have to match identically with the camino messenger protocol version, but they should be in sync.
