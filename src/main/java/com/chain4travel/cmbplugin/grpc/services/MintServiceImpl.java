@@ -32,7 +32,7 @@ public class MintServiceImpl extends MintServiceImplBase {
 
     @Override
     public void mint(MintRequest request, StreamObserver<MintResponse> responseObserver) {
-        var validationId = UUID.fromString(request.getValidationId());
+        var validationId = UUID.fromString(request.getValidationId().getValue());
 
         // If legacy system is not stateful, get data from the cache and then mint
         if (cacheEnabled) {
@@ -48,7 +48,7 @@ public class MintServiceImpl extends MintServiceImplBase {
         // TODO add cases for other search types like transport search etc.
 
         var mintId = UUID.randomUUID();
-        var response = MintResponse.newBuilder().setMintId(mintId.toString()).setValidationId(request.getValidationId()).build();
+        var response = MintResponse.newBuilder().setMintId(build.buf.gen.cmp.types.v1alpha.UUID.newBuilder().setValue(mintId.toString())).setValidationId(request.getValidationId()).build();
 
         responseObserver.onNext(response);
         responseObserver.onCompleted();

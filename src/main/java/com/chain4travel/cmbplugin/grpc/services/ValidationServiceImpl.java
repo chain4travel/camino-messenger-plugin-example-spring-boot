@@ -37,7 +37,7 @@ public class ValidationServiceImpl extends ValidationServiceImplBase {
 
     @Override
     public void validation(ValidationRequest request, StreamObserver<ValidationResponse> responseObserver) {
-        var searchId = UUID.fromString(request.getSearchId());
+        var searchId = UUID.fromString(request.getValidationObject().getSearchIdentifier().getSearchId().getValue());
 
         // If legacy system is not stateful, get data from the cache and then validate
         if (cacheEnabled && cacheService.getCacheSearchType(searchId) == CacheSearchType.accommodation) {
@@ -56,7 +56,7 @@ public class ValidationServiceImpl extends ValidationServiceImplBase {
         // TODO add cases for other search types like transport search etc.
 
         var validationId = UUID.randomUUID();
-        var response = ValidationResponse.newBuilder().setValidationId(validationId.toString()).build();
+        var response = ValidationResponse.newBuilder().setValidationId(build.buf.gen.cmp.types.v1alpha.UUID.newBuilder().setValue(validationId.toString())).build();
 
         if (cacheEnabled) {
             cacheService.cacheValidationData(validationId, request, response);

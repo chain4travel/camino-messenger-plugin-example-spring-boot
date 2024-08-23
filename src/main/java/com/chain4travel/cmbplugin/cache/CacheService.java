@@ -20,13 +20,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.google.protobuf.GeneratedMessageV3;
+
+
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.RemovalCause;
-import com.google.protobuf.GeneratedMessageV3;
 
 import build.buf.gen.cmp.services.book.v1alpha.ValidationRequest;
 import build.buf.gen.cmp.services.book.v1alpha.ValidationResponse;
+import build.buf.gen.cmp.services.accommodation.v1alpha.AccommodationSearchRequest;
+import build.buf.gen.cmp.services.accommodation.v1alpha.AccommodationSearchResponse;
 import jakarta.annotation.PostConstruct;
 
 
@@ -123,7 +127,7 @@ public class CacheService {
     }
 
 
-    public void cacheSearchData(UUID searchId, CacheSearchType type, GeneratedMessageV3 requestMessage, GeneratedMessageV3 responseMessage) {
+    public void cacheSearchData(UUID searchId, CacheSearchType type, AccommodationSearchRequest requestMessage, AccommodationSearchResponse responseMessage) {
         cacheData(searchId, CacheDataType.search, type, requestMessage, responseMessage);
     }
 
@@ -218,6 +222,7 @@ public class CacheService {
             }
         }
     }
+
 
 
     private CacheEntry getCacheEntryIfPresent(Cache<UUID, CacheEntry> cache, long ttlSeconds, UUID id) {
