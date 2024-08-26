@@ -43,7 +43,7 @@ Version names do not have to match identically with the camino messenger protoco
 
 ## Dependencies
 
-This chapter outlines the key dependencies required to build, package, and run the project. Ensure all dependencies are installed and properly configured before proceeding with the project setup.
+This chapter outlines the key dependencies required to build, package, and run the project. See also the pom.xml. Be sure to chose the right version when you download the packages from buf.build.
 
 - **Maven**
   - Maven is a build automation tool primarily used for Java projects. It handles project dependencies, compiles the source code, runs tests, and packages the project.
@@ -79,4 +79,4 @@ Ensure all these dependencies are correctly set up and configured before attempt
 
 - **Run the Packaged JAR**
   - Once the JAR file is created, you can run the project using the Java command.
-  - Use the following command to run the packaged application: `java -jar target/cmb-plugin-0.0.1-SNAPSHOT.jar`.
+  - Use the following command to run the packaged application: `java -jar target/cmb-plugin-0.0.1-SNAPSHOT.jar`. The package version specified in pom.xml , so if the user changes the version in pom.xml the package name will change.
