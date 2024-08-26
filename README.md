@@ -50,18 +50,10 @@ This chapter outlines the key dependencies required to build, package, and run t
   - Install Maven from [Maven's official website](https://maven.apache.org/).
   - Verify the installation by running `mvn -version` in your terminal.
 
-- **mvn package**
-  - After setting up Maven, the next step is to package the project. This step compiles the source code, runs the tests, and packages the compiled code into a JAR file.
-  - Use the command `mvn package` to execute this step. This command creates a JAR file in the `target/` directory, which will be used in the following steps.
-
 - **Java Runtime Environment (JRE) 21**
   - The project requires Java Runtime Environment version 21 to run. Ensure that JRE 21 is installed on your system.
   - Download the appropriate version from the [official JDK website](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html).
   - Verify the installation by running `java -version` in your terminal.
-
-- **Run the Packaged JAR**
-  - Once the JAR file is created, you can run the project using the Java command.
-  - Use the following command to run the packaged application: `java -jar target/cmb-plugin-0.0.1-SNAPSHOT.jar`.
 
 - **gRPC 1.58**
   - gRPC is a high-performance, open-source framework for building remote procedure call (RPC) APIs. Version 1.58 is required for this project.
@@ -78,3 +70,13 @@ This chapter outlines the key dependencies required to build, package, and run t
   - You can find the protobuf Java library on [Maven Central](https://search.maven.org/artifact/com.google.protobuf/protobuf-java/24.0/jar).
 
 Ensure all these dependencies are correctly set up and configured before attempting to build and run the project.
+
+## Usage
+
+- **mvn package**
+  - After setting up Maven, the next step is to package the project. This step compiles the source code, runs the tests, and packages the compiled code into a JAR file.
+  - Use the command `mvn package` to execute this step. This command creates a JAR file in the `target/` directory, which will be used in the following steps.
+
+- **Run the Packaged JAR**
+  - Once the JAR file is created, you can run the project using the Java command.
+  - Use the following command to run the packaged application: `java -jar target/cmb-plugin-0.0.1-SNAPSHOT.jar`.
