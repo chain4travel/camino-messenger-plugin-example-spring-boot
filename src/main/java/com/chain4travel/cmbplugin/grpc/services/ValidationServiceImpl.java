@@ -14,11 +14,11 @@ import com.chain4travel.cmbplugin.cache.CacheSearchType;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import com.chain4travel.cmbplugin.grpc.converter.MessageConverter;
 
-import build.buf.gen.cmp.services.accommodation.v1alpha.AccommodationSearchRequest;
-import build.buf.gen.cmp.services.accommodation.v1alpha.AccommodationSearchResponse;
-import build.buf.gen.cmp.services.book.v1alpha.ValidationRequest;
-import build.buf.gen.cmp.services.book.v1alpha.ValidationResponse;
-import build.buf.gen.cmp.services.book.v1alpha.ValidationServiceGrpc.ValidationServiceImplBase;
+import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchRequest;
+import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchResponse;
+import build.buf.gen.cmp.services.book.v1.ValidationRequest;
+import build.buf.gen.cmp.services.book.v1.ValidationResponse;
+import build.buf.gen.cmp.services.book.v1.ValidationServiceGrpc.ValidationServiceImplBase;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 
@@ -56,7 +56,7 @@ public class ValidationServiceImpl extends ValidationServiceImplBase {
         // TODO add cases for other search types like transport search etc.
 
         var validationId = UUID.randomUUID();
-        var response = ValidationResponse.newBuilder().setValidationId(build.buf.gen.cmp.types.v1alpha.UUID.newBuilder().setValue(validationId.toString())).build();
+        var response = ValidationResponse.newBuilder().setValidationId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(validationId.toString())).build();
 
         if (cacheEnabled) {
             cacheService.cacheValidationData(validationId, request, response);

@@ -27,10 +27,10 @@ import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.RemovalCause;
 
-import build.buf.gen.cmp.services.book.v1alpha.ValidationRequest;
-import build.buf.gen.cmp.services.book.v1alpha.ValidationResponse;
-import build.buf.gen.cmp.services.accommodation.v1alpha.AccommodationSearchRequest;
-import build.buf.gen.cmp.services.accommodation.v1alpha.AccommodationSearchResponse;
+import build.buf.gen.cmp.services.book.v1.ValidationRequest;
+import build.buf.gen.cmp.services.book.v1.ValidationResponse;
+import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchRequest;
+import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchResponse;
 import jakarta.annotation.PostConstruct;
 
 

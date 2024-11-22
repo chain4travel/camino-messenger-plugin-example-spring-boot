@@ -7,9 +7,9 @@ import static io.grpc.Metadata.*;
 
 import org.springframework.stereotype.Service;
 
-import build.buf.gen.cmp.services.ping.v1alpha.PingRequest;
-import build.buf.gen.cmp.services.ping.v1alpha.PingResponse;
-import build.buf.gen.cmp.services.ping.v1alpha.PingServiceGrpc;
+import build.buf.gen.cmp.services.ping.v1.PingRequest;
+import build.buf.gen.cmp.services.ping.v1.PingResponse;
+import build.buf.gen.cmp.services.ping.v1.PingServiceGrpc;
 import io.grpc.CallOptions;
 import io.grpc.Channel;
 import io.grpc.ClientCall;
