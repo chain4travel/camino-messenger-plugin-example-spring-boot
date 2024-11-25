@@ -4,7 +4,7 @@ This is a simple example of a grpc server written in java spring-boot.
 The project leverages the [grpc-server-spring-boot-starter](https://github.com/grpc-ecosystem/grpc-spring)
 to start a grpc server and register grpc services.
 
-Furthermore, it uses the [Buf build generated sdk for java](https://buf.build/docs/bsr/generated-sdks/overview) 
+Furthermore, it uses the [Buf build generated sdk for java](https://buf.build/docs/bsr/generated-sdks/overview)
 to generate the protocolbuffers java classes as well as the grpc stubs. (see mvn dependencies)
 
 ## Registering a new service
@@ -79,4 +79,4 @@ Ensure all these dependencies are correctly set up and configured before attempt
 
 - **Run the Packaged JAR**
   - Once the JAR file is created, you can run the project using the Java command.
-  - Use the following command to run the packaged application: `java -jar target/cmb-plugin-0.0.1-SNAPSHOT.jar`. The package version specified in pom.xml , so if the user changes the version in pom.xml the package name will change.
+  - Use the following command to run the packaged application: `java -jar target/cmb-plugin-10.1.0-SNAPSHOT.jar`. The package version specified in pom.xml , so if the user changes the version in pom.xml the package name will change.
