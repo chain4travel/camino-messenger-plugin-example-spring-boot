@@ -19,7 +19,7 @@ An easy way to test a service is to use grpcurl. For installation steps, refer t
 Call the ping service for instance with:
 
 ```sh
-grpcurl -plaintext localhost:50052 cmp.services.ping.v11.PingService.Ping
+grpcurl -plaintext localhost:50052 cmp.services.ping.v1.PingService.Ping
 ```
 
 You can list the services and methods with:
