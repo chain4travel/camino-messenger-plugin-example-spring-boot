@@ -22,3 +22,6 @@ cacheData
 
 ### VS Code ###
 .vscode/
+
+### MVN ###
+pom.xml.versionsBackup

@@ -6,12 +6,12 @@ package com.chain4travel.cmbplugin.grpc.converter;
 import java.io.IOException;
 import java.io.InputStream;
 
-import build.buf.gen.cmp.services.accommodation.v1alpha.AccommodationSearchRequest;
-import build.buf.gen.cmp.services.accommodation.v1alpha.AccommodationSearchResponse;
-import build.buf.gen.cmp.services.book.v1alpha.ValidationRequest;
-import build.buf.gen.cmp.services.book.v1alpha.ValidationResponse;
-import build.buf.gen.cmp.services.transport.v1alpha.TransportSearchRequest;
-import build.buf.gen.cmp.services.transport.v1alpha.TransportSearchResponse;
+import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchRequest;
+import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchResponse;
+import build.buf.gen.cmp.services.book.v1.ValidationRequest;
+import build.buf.gen.cmp.services.book.v1.ValidationResponse;
+import build.buf.gen.cmp.services.transport.v1.TransportSearchRequest;
+import build.buf.gen.cmp.services.transport.v1.TransportSearchResponse;
 
 
 public class MessageConverter {

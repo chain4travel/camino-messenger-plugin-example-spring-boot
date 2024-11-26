@@ -10,15 +10,15 @@
     </parent>
     <groupId>com.chain4travel</groupId>
     <artifactId>cmb-plugin</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>10.1.0-SNAPSHOT</version>
     <name>cmb-plugin</name>
     <description>cmb-plugin</description>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <java.version>21</java.version>
-        <camino-messenger-protocol.protobuff.version>24.0.0.1.20240812155629.cf8583b47e72</camino-messenger-protocol.protobuff.version>
-        <camino-messenger-protocol.grpc.version>1.58.0.1.20240812155629.cf8583b47e72</camino-messenger-protocol.grpc.version>
+        <camino-messenger-protocol.protobuff.version>24.0.0.1.20240924170438.a97744087df6</camino-messenger-protocol.protobuff.version>
+        <camino-messenger-protocol.grpc.version>1.58.0.1.20240924170438.a97744087df6</camino-messenger-protocol.grpc.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -29,18 +29,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty</artifactId>
-            <version>1.58.0</version>
+            <version>1.68.1</version>
         </dependency>
 
         <!-- For the server (only) -->
         <dependency>
             <groupId>net.devh</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
-            <version>2.15.0.RELEASE</version>
+            <version>3.1.0.RELEASE</version>
             <exclusions>
                 <exclusion>
                     <groupId>io.grpc</groupId>
@@ -80,7 +80,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -94,7 +94,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <repositories>
         <repository>
             <name>Buf Maven Repository</name>
