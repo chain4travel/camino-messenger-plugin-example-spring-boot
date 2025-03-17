@@ -79,4 +79,4 @@ Ensure all these dependencies are correctly set up and configured before attempt
 
 - **Run the Packaged JAR**
   - Once the JAR file is created, you can run the project using the Java command.
-  - Use the following command to run the packaged application: `java -jar target/cmb-plugin-10.1.0-SNAPSHOT.jar`. The package version specified in pom.xml , so if the user changes the version in pom.xml the package name will change.
+  - Use the following command to run the packaged application: `java -jar target/cmb-plugin-11.0.0-SNAPSHOT.jar`. The package version specified in pom.xml , so if the user changes the version in pom.xml the package name will change.
