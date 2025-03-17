@@ -2,10 +2,10 @@ package com.chain4travel.cmbplugin.grpc.services;
 
 import static com.chain4travel.cmbplugin.grpc.metadata.MetadataInterceptor.*;
 
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchRequest;
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchResponse;
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchServiceGrpc;
-import build.buf.gen.cmp.types.v1.SearchResponseMetadata;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchRequest;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchResponse;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchServiceGrpc;
+import build.buf.gen.cmp.types.v3.SearchResponseMetadata;
 import com.chain4travel.cmbplugin.cache.CacheSearchType;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import io.grpc.stub.StreamObserver;

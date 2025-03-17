@@ -1,11 +1,11 @@
 package com.chain4travel.cmbplugin.grpc.converter;
 
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchRequest;
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchResponse;
-import build.buf.gen.cmp.services.book.v1.ValidationRequest;
-import build.buf.gen.cmp.services.book.v1.ValidationResponse;
-import build.buf.gen.cmp.services.transport.v1.TransportSearchRequest;
-import build.buf.gen.cmp.services.transport.v1.TransportSearchResponse;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchRequest;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchResponse;
+import build.buf.gen.cmp.services.book.v2.ValidationRequest;
+import build.buf.gen.cmp.services.book.v2.ValidationResponse;
+import build.buf.gen.cmp.services.transport.v3.TransportSearchRequest;
+import build.buf.gen.cmp.services.transport.v3.TransportSearchResponse;
 import java.io.IOException;
 import java.io.InputStream;
 

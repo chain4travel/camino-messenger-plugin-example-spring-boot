@@ -1,10 +1,10 @@
 package com.chain4travel.cmbplugin.grpc.services;
 
-import build.buf.gen.cmp.services.book.v1.MintRequest;
-import build.buf.gen.cmp.services.book.v1.MintResponse;
-import build.buf.gen.cmp.services.book.v1.MintServiceGrpc.MintServiceImplBase;
-import build.buf.gen.cmp.services.book.v1.ValidationRequest;
-import build.buf.gen.cmp.services.book.v1.ValidationResponse;
+import build.buf.gen.cmp.services.book.v2.MintRequest;
+import build.buf.gen.cmp.services.book.v2.MintResponse;
+import build.buf.gen.cmp.services.book.v2.MintServiceGrpc.MintServiceImplBase;
+import build.buf.gen.cmp.services.book.v2.ValidationRequest;
+import build.buf.gen.cmp.services.book.v2.ValidationResponse;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import com.chain4travel.cmbplugin.grpc.converter.MessageConverter;
 import io.grpc.stub.StreamObserver;
@@ -58,6 +58,7 @@ public class MintServiceImpl extends MintServiceImplBase {
   }
 
   private void mintAccommodation(UUID validationId) {
-    // TODO mint accommodation by handing over just the validation id to the legacy system
+    // TODO mint accommodation by handing over just the validation id to the legacy
+    // system
   }
 }

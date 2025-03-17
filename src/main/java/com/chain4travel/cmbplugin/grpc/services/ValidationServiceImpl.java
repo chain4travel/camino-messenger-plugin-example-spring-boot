@@ -1,10 +1,10 @@
 package com.chain4travel.cmbplugin.grpc.services;
 
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchRequest;
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchResponse;
-import build.buf.gen.cmp.services.book.v1.ValidationRequest;
-import build.buf.gen.cmp.services.book.v1.ValidationResponse;
-import build.buf.gen.cmp.services.book.v1.ValidationServiceGrpc.ValidationServiceImplBase;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchRequest;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchResponse;
+import build.buf.gen.cmp.services.book.v2.ValidationRequest;
+import build.buf.gen.cmp.services.book.v2.ValidationResponse;
+import build.buf.gen.cmp.services.book.v2.ValidationServiceGrpc.ValidationServiceImplBase;
 import com.chain4travel.cmbplugin.cache.CacheSearchType;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import com.chain4travel.cmbplugin.grpc.converter.MessageConverter;

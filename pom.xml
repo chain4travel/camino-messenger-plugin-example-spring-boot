@@ -18,8 +18,8 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <java.version>21</java.version>
-        <camino-messenger-protocol.protobuff.version>24.0.0.1.20250307104026.ffe2c3741a33</camino-messenger-protocol.protobuff.version>
-        <camino-messenger-protocol.grpc.version>1.58.0.1.20250307104026.ffe2c3741a33</camino-messenger-protocol.grpc.version>
+        <camino-messenger-protocol.protobuff.version>30.1.0.1.20250307104026.ffe2c3741a33</camino-messenger-protocol.protobuff.version>
+        <camino-messenger-protocol.grpc.version>1.71.0.1.20250307104026.ffe2c3741a33</camino-messenger-protocol.grpc.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -34,7 +34,7 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty</artifactId>
-            <version>1.68.1</version>
+            <version>1.71.0</version>
         </dependency>
 
         <!-- For the server (only) -->
@@ -70,6 +70,14 @@
             <artifactId>caffeine</artifactId>
             <version>3.1.8</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>4.30.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
