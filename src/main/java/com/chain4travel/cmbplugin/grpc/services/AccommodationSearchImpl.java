@@ -1,51 +1,52 @@
-
-
 package com.chain4travel.cmbplugin.grpc.services;
 
-
 import static com.chain4travel.cmbplugin.grpc.metadata.MetadataInterceptor.*;
-
-import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-
-import com.chain4travel.cmbplugin.cache.CacheSearchType;
-import com.chain4travel.cmbplugin.cache.CacheService;
 
 import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchRequest;
 import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchResponse;
 import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchServiceGrpc;
 import build.buf.gen.cmp.types.v1.SearchResponseMetadata;
+import com.chain4travel.cmbplugin.cache.CacheSearchType;
+import com.chain4travel.cmbplugin.cache.CacheService;
 import io.grpc.stub.StreamObserver;
+import java.util.UUID;
 import net.devh.boot.grpc.server.service.GrpcService;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 @GrpcService
-public class AccommodationSearchImpl extends AccommodationSearchServiceGrpc.AccommodationSearchServiceImplBase {
+public class AccommodationSearchImpl
+    extends AccommodationSearchServiceGrpc.AccommodationSearchServiceImplBase {
 
-    @Autowired
-    private CacheService cacheService;
+  @Autowired private CacheService cacheService;
 
-    @Value("${cmbplugin.cache.enabled}")
-    private boolean      cacheEnabled;
+  @Value("${cmbplugin.cache.enabled}")
+  private boolean cacheEnabled;
 
+  @Override
+  public void accommodationSearch(
+      AccommodationSearchRequest request,
+      StreamObserver<AccommodationSearchResponse> responseObserver) {
+    String recipient = METADATA_CTX_KEY.get();
 
-    @Override
-    public void accommodationSearch(AccommodationSearchRequest request, StreamObserver<AccommodationSearchResponse> responseObserver) {
-        String recipient = METADATA_CTX_KEY.get();
+    // TODO call recipient's legacy system.
 
-        // TODO call recipient's legacy system.
+    var searchId = UUID.randomUUID();
+    AccommodationSearchResponse response =
+        AccommodationSearchResponse.newBuilder()
+            .setMetadata(
+                SearchResponseMetadata.newBuilder()
+                    .setSearchId(
+                        build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(searchId.toString()))
+                    .setContext("Hello from Spring Boot grpc partner plugin!"))
+            .build();
 
-        var searchId = UUID.randomUUID();
-        AccommodationSearchResponse response = AccommodationSearchResponse.newBuilder().setMetadata(SearchResponseMetadata.newBuilder().setSearchId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(searchId.toString())).setContext("Hello from Spring Boot grpc partner plugin!")).build();
-
-        // If legacy system is not stateful, store data in cache for later validation
-        if (cacheEnabled) {
-            cacheService.cacheSearchData(searchId, CacheSearchType.accommodation, request, response);
-        }
-
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
+    // If legacy system is not stateful, store data in cache for later validation
+    if (cacheEnabled) {
+      cacheService.cacheSearchData(searchId, CacheSearchType.accommodation, request, response);
     }
+
+    responseObserver.onNext(response);
+    responseObserver.onCompleted();
+  }
 }
