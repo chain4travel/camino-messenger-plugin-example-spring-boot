@@ -15,13 +15,6 @@ public class PingImpl extends PingServiceGrpc.PingServiceImplBase {
 
   @Override
   public void ping(PingRequest request, StreamObserver<PingResponse> responseObserver) {
-    responseObserver.onNext(
-        PingResponse.newBuilder().setPingMessage(request.getPingMessage()).build());
-    responseObserver.onCompleted();
-  }
-
-  @Override
-  public void ping(PingRequest request, StreamObserver<PingResponse> responseObserver) {
     // Current time as timestamp
     long currentTimeMillis = System.currentTimeMillis();
     Timestamp timestamp =

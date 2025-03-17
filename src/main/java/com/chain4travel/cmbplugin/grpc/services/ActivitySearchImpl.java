@@ -3,6 +3,9 @@ package com.chain4travel.cmbplugin.grpc.services;
 import build.buf.gen.cmp.services.activity.v3.ActivitySearchRequest;
 import build.buf.gen.cmp.services.activity.v3.ActivitySearchResponse;
 import build.buf.gen.cmp.services.activity.v3.ActivitySearchServiceGrpc;
+import build.buf.gen.cmp.types.v1.Header;
+import build.buf.gen.cmp.types.v1.ResponseHeader;
+import build.buf.gen.cmp.types.v1.StatusType;
 import build.buf.gen.cmp.types.v3.SearchResponseMetadata;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -14,11 +17,17 @@ public class ActivitySearchImpl extends ActivitySearchServiceGrpc.ActivitySearch
       ActivitySearchRequest request, StreamObserver<ActivitySearchResponse> responseObserver) {
     ActivitySearchResponse response =
         ActivitySearchResponse.newBuilder()
+            .setHeader(
+                ResponseHeader.newBuilder()
+                    .setStatus(StatusType.STATUS_TYPE_SUCCESS)
+                    .setBaseHeader(Header.getDefaultInstance())
+                    .build())
             .setMetadata(
                 SearchResponseMetadata.newBuilder()
                     .setContext("Activity search response from plugin")
                     .build())
             .build();
+
     responseObserver.onNext(response);
     responseObserver.onCompleted();
   }
