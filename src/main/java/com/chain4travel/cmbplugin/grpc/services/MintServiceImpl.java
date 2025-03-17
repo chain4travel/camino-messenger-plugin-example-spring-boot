@@ -5,8 +5,12 @@ import build.buf.gen.cmp.services.book.v2.MintResponse;
 import build.buf.gen.cmp.services.book.v2.MintServiceGrpc.MintServiceImplBase;
 import build.buf.gen.cmp.services.book.v2.ValidationRequest;
 import build.buf.gen.cmp.services.book.v2.ValidationResponse;
+import build.buf.gen.cmp.types.v1.Header;
+import build.buf.gen.cmp.types.v1.ResponseHeader;
+import build.buf.gen.cmp.types.v1.StatusType;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import com.chain4travel.cmbplugin.grpc.converter.MessageConverter;
+import com.google.protobuf.Timestamp;
 import io.grpc.stub.StreamObserver;
 import java.util.UUID;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -42,10 +46,25 @@ public class MintServiceImpl extends MintServiceImplBase {
     // TODO add cases for other search types like transport search etc.
 
     var mintId = UUID.randomUUID();
+
+    // Current time as timestamp
+    long currentTimeMillis = System.currentTimeMillis();
+    Timestamp timestamp =
+        Timestamp.newBuilder()
+            .setSeconds(currentTimeMillis / 1000)
+            .setNanos((int) ((currentTimeMillis % 1000) * 1000000))
+            .build();
+
     var response =
         MintResponse.newBuilder()
+            .setHeader(
+                ResponseHeader.newBuilder()
+                    .setStatus(StatusType.STATUS_TYPE_SUCCESS)
+                    .setBaseHeader(Header.getDefaultInstance())
+                    .build())
             .setMintId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(mintId.toString()))
             .setValidationId(request.getValidationId())
+            .setProviderBookingTimestamp(timestamp)
             .build();
 
     responseObserver.onNext(response);

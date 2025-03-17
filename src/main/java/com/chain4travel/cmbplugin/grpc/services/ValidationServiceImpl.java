@@ -5,6 +5,9 @@ import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchResponse;
 import build.buf.gen.cmp.services.book.v2.ValidationRequest;
 import build.buf.gen.cmp.services.book.v2.ValidationResponse;
 import build.buf.gen.cmp.services.book.v2.ValidationServiceGrpc.ValidationServiceImplBase;
+import build.buf.gen.cmp.types.v1.Header;
+import build.buf.gen.cmp.types.v1.ResponseHeader;
+import build.buf.gen.cmp.types.v1.StatusType;
 import com.chain4travel.cmbplugin.cache.CacheSearchType;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import com.chain4travel.cmbplugin.grpc.converter.MessageConverter;
@@ -56,6 +59,11 @@ public class ValidationServiceImpl extends ValidationServiceImplBase {
     var validationId = UUID.randomUUID();
     var response =
         ValidationResponse.newBuilder()
+            .setHeader(
+                ResponseHeader.newBuilder()
+                    .setStatus(StatusType.STATUS_TYPE_SUCCESS)
+                    .setBaseHeader(Header.getDefaultInstance())
+                    .build())
             .setValidationId(
                 build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(validationId.toString()))
             .build();
