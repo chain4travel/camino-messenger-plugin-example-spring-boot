@@ -9,6 +9,9 @@ public class GrpcServerConfig {
 
   @Bean
   public GlobalServerInterceptorConfigurer globalInterceptorConfigurerAdapter() {
-    return registry -> registry.add(0, new MetadataInterceptor());
+    return registry -> {
+      registry.add(0, new MetadataInterceptor());
+      registry.add(new ResponseHeaderInterceptor());
+    };
   }
 }
