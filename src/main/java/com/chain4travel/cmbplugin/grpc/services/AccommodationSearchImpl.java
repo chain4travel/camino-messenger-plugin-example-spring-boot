@@ -38,7 +38,7 @@ public class AccommodationSearchImpl
                 SearchResponseMetadata.newBuilder()
                     .setSearchId(
                         build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(searchId.toString()))
-                    .setContext("Hello from Spring Boot grpc partner plugin!"))
+                    .setContext("Accommodation search response from plugin"))
             .build();
 
     // If legacy system is not stateful, store data in cache for later validation

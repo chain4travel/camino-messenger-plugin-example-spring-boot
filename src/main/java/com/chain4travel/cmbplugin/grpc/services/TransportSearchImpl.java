@@ -15,7 +15,9 @@ public class TransportSearchImpl extends TransportSearchServiceGrpc.TransportSea
     TransportSearchResponse response =
         TransportSearchResponse.newBuilder()
             .setMetadata(
-                SearchResponseMetadata.newBuilder().setContext("Transport search response").build())
+                SearchResponseMetadata.newBuilder()
+                    .setContext("Transport search response from plugin")
+                    .build())
             .build();
     responseObserver.onNext(response);
     responseObserver.onCompleted();

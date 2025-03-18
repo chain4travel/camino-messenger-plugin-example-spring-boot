@@ -15,7 +15,9 @@ public class ActivitySearchImpl extends ActivitySearchServiceGrpc.ActivitySearch
     ActivitySearchResponse response =
         ActivitySearchResponse.newBuilder()
             .setMetadata(
-                SearchResponseMetadata.newBuilder().setContext("Activity search response").build())
+                SearchResponseMetadata.newBuilder()
+                    .setContext("Activity search response from plugin")
+                    .build())
             .build();
     responseObserver.onNext(response);
     responseObserver.onCompleted();
