@@ -5,8 +5,11 @@ import build.buf.gen.cmp.services.book.v2.MintResponse;
 import build.buf.gen.cmp.services.book.v2.MintServiceGrpc.MintServiceImplBase;
 import build.buf.gen.cmp.services.book.v2.ValidationRequest;
 import build.buf.gen.cmp.services.book.v2.ValidationResponse;
+import build.buf.gen.cmp.types.v2.Currency;
+import build.buf.gen.cmp.types.v2.Price;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import com.chain4travel.cmbplugin.grpc.converter.MessageConverter;
+import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import java.util.UUID;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -46,6 +49,13 @@ public class MintServiceImpl extends MintServiceImplBase {
         MintResponse.newBuilder()
             .setMintId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(mintId.toString()))
             .setValidationId(request.getValidationId())
+            .setPrice(
+                Price.newBuilder()
+                    .setCurrency(
+                        Currency.newBuilder().setNativeToken(Empty.getDefaultInstance()).build())
+                    .setValue("000")
+                    .setDecimals(2)
+                    .build())
             .build();
 
     responseObserver.onNext(response);
