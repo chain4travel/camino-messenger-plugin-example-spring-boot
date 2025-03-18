@@ -5,12 +5,10 @@ import static com.chain4travel.cmbplugin.grpc.metadata.MetadataInterceptor.*;
 import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchRequest;
 import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchResponse;
 import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchServiceGrpc;
-import build.buf.gen.cmp.types.v1.Header;
-import build.buf.gen.cmp.types.v1.ResponseHeader;
-import build.buf.gen.cmp.types.v1.StatusType;
 import build.buf.gen.cmp.types.v3.SearchResponseMetadata;
 import com.chain4travel.cmbplugin.cache.CacheSearchType;
 import com.chain4travel.cmbplugin.cache.CacheService;
+import com.chain4travel.cmbplugin.grpc.metadata.HeaderUtil;
 import io.grpc.stub.StreamObserver;
 import java.util.UUID;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -38,11 +36,7 @@ public class AccommodationSearchImpl
 
     AccommodationSearchResponse response =
         AccommodationSearchResponse.newBuilder()
-            .setHeader(
-                ResponseHeader.newBuilder()
-                    .setStatus(StatusType.STATUS_TYPE_SUCCESS)
-                    .setBaseHeader(Header.getDefaultInstance())
-                    .build())
+            .setHeader(HeaderUtil.createSuccessHeader())
             .setMetadata(
                 SearchResponseMetadata.newBuilder()
                     .setSearchId(

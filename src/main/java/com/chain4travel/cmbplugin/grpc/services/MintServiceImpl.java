@@ -5,13 +5,11 @@ import build.buf.gen.cmp.services.book.v2.MintResponse;
 import build.buf.gen.cmp.services.book.v2.MintServiceGrpc.MintServiceImplBase;
 import build.buf.gen.cmp.services.book.v2.ValidationRequest;
 import build.buf.gen.cmp.services.book.v2.ValidationResponse;
-import build.buf.gen.cmp.types.v1.Header;
-import build.buf.gen.cmp.types.v1.ResponseHeader;
-import build.buf.gen.cmp.types.v1.StatusType;
 import build.buf.gen.cmp.types.v2.Currency;
 import build.buf.gen.cmp.types.v2.Price;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import com.chain4travel.cmbplugin.grpc.converter.MessageConverter;
+import com.chain4travel.cmbplugin.grpc.metadata.HeaderUtil;
 import com.google.protobuf.Empty;
 import com.google.protobuf.Timestamp;
 import io.grpc.stub.StreamObserver;
@@ -60,11 +58,7 @@ public class MintServiceImpl extends MintServiceImplBase {
 
     var response =
         MintResponse.newBuilder()
-            .setHeader(
-                ResponseHeader.newBuilder()
-                    .setStatus(StatusType.STATUS_TYPE_SUCCESS)
-                    .setBaseHeader(Header.getDefaultInstance())
-                    .build())
+            .setHeader(HeaderUtil.createSuccessHeader())
             .setMintId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(mintId.toString()))
             .setValidationId(request.getValidationId())
             .setProviderBookingTimestamp(timestamp)
