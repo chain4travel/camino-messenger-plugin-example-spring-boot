@@ -8,6 +8,7 @@ import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchServiceGrp
 import build.buf.gen.cmp.types.v3.SearchResponseMetadata;
 import com.chain4travel.cmbplugin.cache.CacheSearchType;
 import com.chain4travel.cmbplugin.cache.CacheService;
+import com.chain4travel.cmbplugin.grpc.metadata.HeaderUtil;
 import io.grpc.stub.StreamObserver;
 import java.util.UUID;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -32,8 +33,12 @@ public class AccommodationSearchImpl
     // TODO call recipient's legacy system.
 
     var searchId = UUID.randomUUID();
+
     AccommodationSearchResponse response =
         AccommodationSearchResponse.newBuilder()
+            // Setting Headers is required - bot will check if the Headers Exists
+            // If your business logic suggests Failure, return a different success type
+            .setHeader(HeaderUtil.createSuccessHeader())
             .setMetadata(
                 SearchResponseMetadata.newBuilder()
                     .setSearchId(

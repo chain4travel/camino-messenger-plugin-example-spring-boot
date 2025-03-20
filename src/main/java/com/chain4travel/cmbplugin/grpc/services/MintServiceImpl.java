@@ -9,7 +9,9 @@ import build.buf.gen.cmp.types.v2.Currency;
 import build.buf.gen.cmp.types.v2.Price;
 import com.chain4travel.cmbplugin.cache.CacheService;
 import com.chain4travel.cmbplugin.grpc.converter.MessageConverter;
+import com.chain4travel.cmbplugin.grpc.metadata.HeaderUtil;
 import com.google.protobuf.Empty;
+import com.google.protobuf.Timestamp;
 import io.grpc.stub.StreamObserver;
 import java.util.UUID;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -45,10 +47,31 @@ public class MintServiceImpl extends MintServiceImplBase {
     // TODO add cases for other search types like transport search etc.
 
     var mintId = UUID.randomUUID();
+
+    // Current time as timestamp
+    long currentTimeMillis = System.currentTimeMillis();
+    Timestamp timestamp =
+        Timestamp.newBuilder()
+            .setSeconds(currentTimeMillis / 1000)
+            .setNanos((int) ((currentTimeMillis % 1000) * 1000000))
+            .build();
+
     var response =
         MintResponse.newBuilder()
+            // Setting Headers is required - bot will check if the Headers Exists
+            // If your business logic suggests Failure, return a different success type
+            .setHeader(HeaderUtil.createSuccessHeader())
             .setMintId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(mintId.toString()))
             .setValidationId(request.getValidationId())
+            // Price is required - bot will check if the Price Exists
+            .setPrice(
+                Price.newBuilder()
+                    .setCurrency(
+                        Currency.newBuilder().setNativeToken(Empty.getDefaultInstance()).build())
+                    .setValue("000")
+                    .setDecimals(2)
+                    .build())
+            .setProviderBookingTimestamp(timestamp)
             .setPrice(
                 Price.newBuilder()
                     .setCurrency(
