@@ -61,6 +61,13 @@ public class MintServiceImpl extends MintServiceImplBase {
             .setHeader(HeaderUtil.createSuccessHeader())
             .setMintId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(mintId.toString()))
             .setValidationId(request.getValidationId())
+            .setPrice(
+                Price.newBuilder()
+                    .setCurrency(
+                        Currency.newBuilder().setNativeToken(Empty.getDefaultInstance()).build())
+                    .setValue("000")
+                    .setDecimals(2)
+                    .build())
             .setProviderBookingTimestamp(timestamp)
             .setPrice(
                 Price.newBuilder()
