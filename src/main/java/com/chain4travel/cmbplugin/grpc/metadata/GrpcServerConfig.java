@@ -11,7 +11,6 @@ public class GrpcServerConfig {
   public GlobalServerInterceptorConfigurer globalInterceptorConfigurerAdapter() {
     return registry -> {
       registry.add(0, new MetadataInterceptor());
-      registry.add(new ResponseHeaderInterceptor());
     };
   }
 }
