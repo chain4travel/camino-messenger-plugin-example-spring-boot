@@ -36,6 +36,8 @@ public class AccommodationSearchImpl
 
     AccommodationSearchResponse response =
         AccommodationSearchResponse.newBuilder()
+            // Setting Headers is required - bot will check if the Headers Exists
+            // If your business logic suggests Failure, return a different success type
             .setHeader(HeaderUtil.createSuccessHeader())
             .setMetadata(
                 SearchResponseMetadata.newBuilder()

@@ -58,6 +58,8 @@ public class MintServiceImpl extends MintServiceImplBase {
 
     var response =
         MintResponse.newBuilder()
+            // Setting Headers is required - bot will check if the Headers Exists
+            // If your business logic suggests Failure, return a different success type
             .setHeader(HeaderUtil.createSuccessHeader())
             .setMintId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(mintId.toString()))
             .setValidationId(request.getValidationId())

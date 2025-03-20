@@ -15,6 +15,8 @@ public class ActivitySearchImpl extends ActivitySearchServiceGrpc.ActivitySearch
       ActivitySearchRequest request, StreamObserver<ActivitySearchResponse> responseObserver) {
     ActivitySearchResponse response =
         ActivitySearchResponse.newBuilder()
+            // Setting Headers is required - bot will check if the Headers Exists
+            // If your business logic suggests Failure, return a different success type
             .setHeader(HeaderUtil.createSuccessHeader())
             .setMetadata(
                 SearchResponseMetadata.newBuilder()

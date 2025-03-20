@@ -15,6 +15,8 @@ public class TransportSearchImpl extends TransportSearchServiceGrpc.TransportSea
       TransportSearchRequest request, StreamObserver<TransportSearchResponse> responseObserver) {
     TransportSearchResponse response =
         TransportSearchResponse.newBuilder()
+            // Setting Headers is required - bot will check if the Headers Exists
+            // If your business logic suggests Failure, return a different success type
             .setHeader(HeaderUtil.createSuccessHeader())
             .setMetadata(
                 SearchResponseMetadata.newBuilder()

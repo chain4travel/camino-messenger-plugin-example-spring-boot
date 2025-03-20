@@ -24,6 +24,8 @@ public class PingImpl extends PingServiceGrpc.PingServiceImplBase {
     responseObserver.onNext(
         PingResponse.newBuilder()
             .setPingMessage(request.getPingMessage())
+            // Setting Headers is required - bot will check if the Headers Exists
+            // If your business logic suggests Failure, return a different success type
             .setHeader(HeaderUtil.createSuccessHeader())
             .setTimestamp(timestamp)
             .build());
