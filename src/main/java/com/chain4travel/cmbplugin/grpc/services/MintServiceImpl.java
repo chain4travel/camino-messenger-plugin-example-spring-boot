@@ -63,6 +63,7 @@ public class MintServiceImpl extends MintServiceImplBase {
             .setHeader(HeaderUtil.createSuccessHeader())
             .setMintId(build.buf.gen.cmp.types.v1.UUID.newBuilder().setValue(mintId.toString()))
             .setValidationId(request.getValidationId())
+            // Price is required - bot will check if the Price Exists
             .setPrice(
                 Price.newBuilder()
                     .setCurrency(
