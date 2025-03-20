@@ -1,13 +1,13 @@
 package com.chain4travel.cmbplugin.cache;
 
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchRequest;
-import build.buf.gen.cmp.services.accommodation.v1.AccommodationSearchResponse;
-import build.buf.gen.cmp.services.book.v1.ValidationRequest;
-import build.buf.gen.cmp.services.book.v1.ValidationResponse;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchRequest;
+import build.buf.gen.cmp.services.accommodation.v3.AccommodationSearchResponse;
+import build.buf.gen.cmp.services.book.v2.ValidationRequest;
+import build.buf.gen.cmp.services.book.v2.ValidationResponse;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.RemovalCause;
-import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Message;
 import jakarta.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
@@ -172,8 +172,8 @@ public class CacheService {
       UUID id,
       CacheDataType cacheDataType,
       CacheSearchType cacheSearchType,
-      GeneratedMessageV3 requestMessage,
-      GeneratedMessageV3 responseMessage) {
+      Message requestMessage,
+      Message responseMessage) {
     var requestPath = getDataPath(id, cacheDataType, CacheDataContentType.request);
     var responsePath = getDataPath(id, cacheDataType, CacheDataContentType.response);
     var fileWriteSuccessful = false;
