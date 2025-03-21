@@ -67,22 +67,3 @@ public class TransportSearchService {
     }
   }
 }
-
-/*
-message TransportSearchRequest {
-	// Message header. Contains API version, message info string and end-user wallet
-	// address
-	cmp.types.v1.RequestHeader header = 1;
-	// Search request metadata
-	cmp.types.v3.SearchRequestMetadata metadata = 2;
-	// Generic search parameters
-	//
-	// Ex: Inclusion of OnRequest options and inclusion of only the cheapest or all
-	// options.
-	cmp.types.v3.SearchParameters search_parameters = 3;
-	// Multiple search queries for this search request
-	repeated TransportSearchQuery queries = 4;
-	// Remarks
-	string remarks = 5;
-}
-*/

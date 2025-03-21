@@ -12,7 +12,7 @@ class GrpcClientPingServiceTest {
 
   @Test
   void testSendPing() {
-    var response = pingService.sendPing("Ping pong", "0x1bba6d75f329022349799d78d87fe9d79fa4c36e");
+    var response = pingService.sendPing("Ping pong", "CM_ACCOUNT_ADDRESS");
     System.out.println(response);
   }
 }
