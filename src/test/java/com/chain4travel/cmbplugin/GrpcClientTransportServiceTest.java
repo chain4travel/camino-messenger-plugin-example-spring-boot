@@ -91,7 +91,8 @@ class GrpcClientTransportSearchServiceTest {
             }
                """;
 
-    var response = TransportSearchService.sendTransportSearchRequest(jsonString, "CM");
+    var response =
+        TransportSearchService.sendTransportSearchRequest(jsonString, "CM_ACCOUNT_ADDRESS");
     System.out.println(response);
   }
 }
