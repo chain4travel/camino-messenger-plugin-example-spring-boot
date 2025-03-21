@@ -12,7 +12,88 @@ class GrpcClientTransportSearchServiceTest {
 
   @Test
   void testTransportSearch() {
-    var response = TransportSearchService.sendTransportSearchRequest("Ping pong", "0x1234");
+    String jsonString =
+        """
+      {
+        \"header\":{
+           \"baseHeader\":{
+
+           }
+        },
+        \"searchParameters\":{
+           \"currency\":{
+              \"isoCurrency\":6
+           }
+        },
+        \"queries\":[
+           {
+              \"travellers\":[
+                 {
+                    \"type\":\"TRAVELLER_TYPE_ADULT\",
+                    \"birthdate\":{
+                       \"year\":1980,
+                       \"month\":1,
+                       \"day\":1
+                    },
+                    \"nationality\":\"COUNTRY_DE\"
+                 },
+                 {
+                    \"travellerId\":1,
+                    \"type\":\"TRAVELLER_TYPE_ADULT\",
+                    \"birthdate\":{
+                       \"year\":1980,
+                       \"month\":1,
+                       \"day\":2
+                    },
+                    \"nationality\":\"COUNTRY_IT\"
+                 }
+              ],
+              \"trips\":[
+                 {
+                    \"departure\":{
+                       \"date\":{
+                          \"year\":2024,
+                          \"month\":5,
+                          \"day\":15
+                       },
+                       \"location\":{
+                          \"locationCodes\":{
+                             \"codes\":[
+                                {
+                                   \"code\":\"BCN\",
+                                   \"type\":\"LOCATION_CODE_TYPE_IATA_CODE\"
+                                }
+                             ]
+                          }
+                       }
+                    },
+                    \"arrival\":{
+                       \"date\":{
+                          \"year\":2024,
+                          \"month\":5,
+                          \"day\":15
+                       },
+                       \"location\":{
+                          \"locationCodes\":{
+                             \"codes\":[
+                                {
+                                   \"code\":\"LIS\",
+                                   \"type\":\"LOCATION_CODE_TYPE_IATA_CODE\"
+                                }
+                             ]
+                          }
+                       }
+                    }
+                 }
+              ]
+           }
+        ]
+     }
+        """;
+
+    var response =
+        TransportSearchService.sendTransportSearchRequest(
+            jsonString, "0x1bba6d75f329022349799d78d87fe9d79fa4c36e");
     System.out.println(response);
   }
 }

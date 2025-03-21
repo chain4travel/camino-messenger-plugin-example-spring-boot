@@ -5,6 +5,8 @@ import static io.grpc.Metadata.*;
 import build.buf.gen.cmp.services.transport.v3.TransportSearchRequest;
 import build.buf.gen.cmp.services.transport.v3.TransportSearchResponse;
 import build.buf.gen.cmp.services.transport.v3.TransportSearchServiceGrpc;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
 import io.grpc.CallOptions;
 import io.grpc.Channel;
 import io.grpc.ClientCall;
@@ -25,14 +27,25 @@ public class TransportSearchService {
   @GrpcClient("cmb-client")
   private TransportSearchServiceGrpc.TransportSearchServiceBlockingStub synchronousClient;
 
-  public TransportSearchResponse sendTransportSearchRequest(String pingMessage, String recipientAddress) {
-    TransportSearchRequest TransportSearchRequest = TransportSearchResponse.newBuilder().build();
-    TransportSearchResponse TransportSearchResponse =
+  public TransportSearchResponse sendTransportSearchRequest(
+      String jsonString, String recipientAddress) {
+    TransportSearchRequest.Builder transportSearchBuilder = TransportSearchRequest.newBuilder();
+
+    try {
+      JsonFormat.parser().ignoringUnknownFields().merge(jsonString, transportSearchBuilder);
+    } catch (InvalidProtocolBufferException e) {
+      throw new RuntimeException("Failed to parse JSON into TransportSearchRequest", e);
+    }
+
+    TransportSearchRequest transportSearchRequest = transportSearchBuilder.build();
+    // TransportSearchRequest transportSearchRequest =
+    // TransportSearchRequest.newBuilder().setSearchParameters().s.build();
+    TransportSearchResponse transportSearchResponse =
         synchronousClient
             .withInterceptors(metadataInterceptor)
             .withOption(metadataKey, recipientAddress)
-            .transportSearch(TransportSearchRequest);
-    return TransportSearchResponse;
+            .transportSearch(transportSearchRequest);
+    return transportSearchResponse;
   }
 
   private static class MetadataInterceptor implements ClientInterceptor {
@@ -54,3 +67,22 @@ public class TransportSearchService {
     }
   }
 }
+
+/*
+message TransportSearchRequest {
+	// Message header. Contains API version, message info string and end-user wallet
+	// address
+	cmp.types.v1.RequestHeader header = 1;
+	// Search request metadata
+	cmp.types.v3.SearchRequestMetadata metadata = 2;
+	// Generic search parameters
+	//
+	// Ex: Inclusion of OnRequest options and inclusion of only the cheapest or all
+	// options.
+	cmp.types.v3.SearchParameters search_parameters = 3;
+	// Multiple search queries for this search request
+	repeated TransportSearchQuery queries = 4;
+	// Remarks
+	string remarks = 5;
+}
+*/
