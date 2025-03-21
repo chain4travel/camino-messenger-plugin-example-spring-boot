@@ -38,8 +38,6 @@ public class TransportSearchService {
     }
 
     TransportSearchRequest transportSearchRequest = transportSearchBuilder.build();
-    // TransportSearchRequest transportSearchRequest =
-    // TransportSearchRequest.newBuilder().setSearchParameters().s.build();
     TransportSearchResponse transportSearchResponse =
         synchronousClient
             .withInterceptors(metadataInterceptor)
