@@ -1,3 +1,11 @@
+# Archive Notice
+Please note that this repository has been archived and is no longer maintained. It can still be used as a reference but will most likely not work out-of-the-box.
+
+The partner plugin reference implementation which is also used for the end2end tests of the [camino-messenger-bot](https://github.com/chain4travel/camino-messenger-bot) can be found [here](https://github.com/chain4travel/camino-messenger-bot/tree/dev/pp-mock).
+
+In case you have further questions about how to integrate, please visit our [discord](https://discord.gg/camino). In case you have further questions we have a special section for the messenger protocol where you can ask the community and us [here](https://discord.com/channels/949247897688494150/1182680860797960253).
+
+
 # Getting Started
 
 This is a simple example of a grpc server written in java spring-boot.
